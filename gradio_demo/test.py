@@ -4,20 +4,20 @@ import cv2
 import numpy as np
 from PIL import Image
 
-BASE_DIR = f"{os.getenv('SCRATCH')}/projects/MiniMax-Remover"
+# BASE_DIR = f"{os.getenv('SCRATCH')}/projects/MiniMax-Remover"
 
-os.makedirs(f"{BASE_DIR}/SAM2-Video-Predictor/checkpoints/", exist_ok=True)
-os.makedirs(f"{BASE_DIR}/model/", exist_ok=True)
+# os.makedirs(f"{BASE_DIR}/SAM2-Video-Predictor/checkpoints/", exist_ok=True)
+# os.makedirs(f"{BASE_DIR}/model/", exist_ok=True)
 
 from huggingface_hub import snapshot_download
 
-def download_sam2():
-    snapshot_download(repo_id="facebook/sam2-hiera-large", local_dir="./SAM2-Video-Predictor/checkpoints/")
-    print("Download sam2 completed")
+# def download_sam2():
+#     snapshot_download(repo_id="facebook/sam2-hiera-large", local_dir="./SAM2-Video-Predictor/checkpoints/")
+#     print("Download sam2 completed")
 
-def download_remover():
-    snapshot_download(repo_id="zibojia/minimax-remover", local_dir="./model/")
-    print("Download minimax remover completed")
+# def download_remover():
+#     snapshot_download(repo_id="zibojia/minimax-remover", local_dir="./model/")
+#     print("Download minimax remover completed")
 
 download_sam2()
 download_remover()
