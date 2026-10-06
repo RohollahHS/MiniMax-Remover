@@ -25,6 +25,7 @@ from huggingface_hub import snapshot_download
 import torch
 import argparse
 import random
+import glob
 
 import torch.nn.functional as F
 import time
@@ -323,23 +324,15 @@ with gr.Blocks() as demo:
     })
     gr.Markdown(f"<div style='text-align:center;'>{text}</div>")
 
+    examples = glob.glob("/scratch/rohhs/downloads/yt-dlop/*.mp4")
+    examples = examples + ["./cartoon/0.mp4", "./normal_videos/0.mp4"]
+
     with gr.Column():
         video_input = gr.Video(label="Upload Video", elem_id="my-video1")
         get_info_btn = gr.Button("Extract First Frame", elem_id="my-btn")
 
         gr.Examples(
-            examples=[
-                ["./cartoon/0.mp4"],
-                ["./cartoon/1.mp4"],
-                ["./cartoon/2.mp4"],
-                ["./cartoon/3.mp4"],
-                ["./cartoon/4.mp4"],
-                ["./normal_videos/0.mp4"],
-                ["./normal_videos/1.mp4"],
-                ["./normal_videos/3.mp4"],
-                ["./normal_videos/4.mp4"],
-                ["./normal_videos/5.mp4"],
-            ],
+            examples=examples,
             inputs=[video_input],
             label="Choose a video to remove.",
             elem_id="my-btn2"
