@@ -19,8 +19,8 @@ from huggingface_hub import snapshot_download
 #     snapshot_download(repo_id="zibojia/minimax-remover", local_dir="./model/")
 #     print("Download minimax remover completed")
 
-download_sam2()
-download_remover()
+# download_sam2()
+# download_remover()
 
 import torch
 import argparse
