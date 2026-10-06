@@ -42,5 +42,7 @@ cd $PROJECTS_DIR/MiniMax-Remover
 input_path=/scratch/rohhs/downloads/yt-dlp/biker.mp4
 output_dir=/scratch/rohhs/downloads/yt-dlp/enhanced
 
+export HF_HUB_OFFLINE=1
+
 cd gradio_demo
 python3 test.py

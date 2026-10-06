@@ -61,9 +61,9 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 def get_pipe_image_and_video_predictor():
     HF_HUB = os.getenv("HF_HUB", ".")
 
-    vae = AutoencoderKLWan.from_pretrained(f"{HF_HUB}/model/vae", torch_dtype=torch.float16)
-    transformer = Transformer3DModel.from_pretrained(f"{HF_HUB}/model/transformer", torch_dtype=torch.float16)
-    scheduler = UniPCMultistepScheduler.from_pretrained(f"{HF_HUB}/model/scheduler")
+    vae = AutoencoderKLWan.from_pretrained(f"{HF_HUB}/MiniMax-Remover/model/vae", torch_dtype=torch.float16)
+    transformer = Transformer3DModel.from_pretrained(f"{HF_HUB}/MiniMax-Remover/model/transformer", torch_dtype=torch.float16)
+    scheduler = UniPCMultistepScheduler.from_pretrained(f"{HF_HUB}/MiniMax-Remover/model/scheduler")
 
     pipe = Minimax_Remover_Pipeline(transformer=transformer, vae=vae, scheduler=scheduler)
     pipe.to(device)
