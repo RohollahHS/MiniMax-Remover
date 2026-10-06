@@ -15,9 +15,11 @@ from pipeline_minimax_remover import Minimax_Remover_Pipeline
 from sam2.build_sam import build_sam2
 from sam2.sam2_image_predictor import SAM2ImagePredictor
 
+from config import BASE_DIR
+
 # Create directories for models
-os.makedirs("./SAM2-Video-Predictor/checkpoints/", exist_ok=True)
-os.makedirs("./model/", exist_ok=True)
+os.makedirs(f"{BASE_DIR}/SAM2-Video-Predictor/checkpoints/", exist_ok=True)
+os.makedirs(f"{BASE_DIR}/model/", exist_ok=True)
 
 # Download models from Hugging Face Hub
 def download_sam2():

@@ -4,8 +4,10 @@ import cv2
 import numpy as np
 from PIL import Image
 
-os.makedirs("./SAM2-Video-Predictor/checkpoints/", exist_ok=True)
-os.makedirs("./model/", exist_ok=True)
+from config import BASE_DIR
+
+os.makedirs(f"{BASE_DIR}/SAM2-Video-Predictor/checkpoints/", exist_ok=True)
+os.makedirs(f"{BASE_DIR}/model/", exist_ok=True)
 
 from huggingface_hub import snapshot_download
 
