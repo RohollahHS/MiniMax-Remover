@@ -15,7 +15,7 @@ from pipeline_minimax_remover import Minimax_Remover_Pipeline
 from sam2.build_sam import build_sam2
 from sam2.sam2_image_predictor import SAM2ImagePredictor
 
-from ..config import BASE_DIR
+BASE_DIR = f"{os.getenv('SCRATCH')}/projects/MiniMax-Remover"
 
 # Create directories for models
 os.makedirs(f"{BASE_DIR}/SAM2-Video-Predictor/checkpoints/", exist_ok=True)

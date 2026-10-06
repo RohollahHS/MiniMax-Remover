@@ -4,7 +4,7 @@ import cv2
 import numpy as np
 from PIL import Image
 
-from ..config import BASE_DIR
+BASE_DIR = f"{os.getenv('SCRATCH')}/projects/MiniMax-Remover"
 
 os.makedirs(f"{BASE_DIR}/SAM2-Video-Predictor/checkpoints/", exist_ok=True)
 os.makedirs(f"{BASE_DIR}/model/", exist_ok=True)
