@@ -60,16 +60,14 @@ H = W
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 def get_pipe_image_and_video_predictor():
-    HF_HUB = os.getenv("HF_HUB", ".")
-
-    vae = AutoencoderKLWan.from_pretrained(f"{HF_HUB}/MiniMax-Remover/vae", torch_dtype=torch.float16)
-    transformer = Transformer3DModel.from_pretrained(f"{HF_HUB}/MiniMax-Remover/transformer", torch_dtype=torch.float16)
-    scheduler = UniPCMultistepScheduler.from_pretrained(f"{HF_HUB}/MiniMax-Remover/scheduler")
+    vae = AutoencoderKLWan.from_pretrained(f"weights/MiniMax-Remover/vae", torch_dtype=torch.float16)
+    transformer = Transformer3DModel.from_pretrained(f"weights/MiniMax-Remover/transformer", torch_dtype=torch.float16)
+    scheduler = UniPCMultistepScheduler.from_pretrained(f"weights/MiniMax-Remover/scheduler")
 
     pipe = Minimax_Remover_Pipeline(transformer=transformer, vae=vae, scheduler=scheduler)
     pipe.to(device)
 
-    sam2_checkpoint = f"{HF_HUB}/SAM2-Video-Predictor/checkpoints/sam2_hiera_large.pt"
+    sam2_checkpoint = f"weights/SAM2-Video-Predictor/checkpoints/sam2_hiera_large.pt"
     config = "sam2_hiera_l.yaml"
 
     video_predictor = build_sam2_video_predictor(config, sam2_checkpoint, device=device)

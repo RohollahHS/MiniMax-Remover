@@ -21,13 +21,13 @@ srun $SRUN_ARGS mkdir -p ${FLASHINFER_WORKSPACE_BASE}
 # kill -9 $(pgrep -f "proxy --hostname 0.0.0.0 --port 8899")
 # proxy --hostname 0.0.0.0 --port 8899 &
 
-kill -9 $(lsof -t -i:8899)
-export http_proxy=http://${node1}:8899
-export https_proxy=$http_proxy
-export HTTP_PROXY=$http_proxy
-export HTTPS_PROXY=$http_proxy
-export no_proxy=localhost,127.0.0.1
-export NO_PROXY=localhost,127.0.0.1
+# kill -9 $(lsof -t -i:8899)
+# export http_proxy=http://${node1}:8899
+# export https_proxy=$http_proxy
+# export HTTP_PROXY=$http_proxy
+# export HTTPS_PROXY=$http_proxy
+# export no_proxy=localhost,127.0.0.1
+# export NO_PROXY=localhost,127.0.0.1
 
 ##### Env Setup
 module --force purge all
@@ -39,10 +39,8 @@ cd $PROJECTS_DIR/MiniMax-Remover
 
 ##### Run the code
 
-input_path=/scratch/rohhs/downloads/yt-dlp/biker.mp4
-output_dir=/scratch/rohhs/downloads/yt-dlp/enhanced
+input_path=/scratch/rohhs/downloads/yt-dlp/1007-source.mp4
+mask_path=/scratch/rohhs/downloads/yt-dlp/1007-mask.mp4
+output_path=/scratch/rohhs/downloads/yt-dlp/1007_minimax_remover.mp4
 
-export HF_HUB_OFFLINE=1
-
-cd gradio_demo
-python3 test.py
+python un_minimax_remover.py --video $input_path --mask $mask_path --output $output_path
