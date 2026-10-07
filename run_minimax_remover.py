@@ -483,9 +483,9 @@ def main():
     )
 
     parser.add_argument(
-        "--output",
-        default="removed_output.mp4",
-        help="Output video path.",
+        "--save_path",
+        default="./results",
+        help="Save path.",
     )
 
     parser.add_argument(
@@ -524,11 +524,14 @@ def main():
     # Load model once.
     pipe = get_pipe()
 
+    video_name = os.path.splitext(os.path.basename(args.video))[0]
+    output_path = os.path.join(args.save_path, video_name + "_MiniMax-Remover.mp4")
+
     remove_object(
         pipe=pipe,
         video_path=args.video,
         mask_path=args.mask,
-        output_path=args.output,
+        output_path=output_path,
         dilation_iterations=args.dilation_iterations,
         num_inference_steps=args.num_inference_steps,
         seed=args.seed,
