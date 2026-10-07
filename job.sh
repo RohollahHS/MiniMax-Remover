@@ -41,6 +41,6 @@ cd $PROJECTS_DIR/MiniMax-Remover
 
 input_path=/scratch/rohhs/downloads/yt-dlp/1007-source.mp4
 mask_path=/scratch/rohhs/downloads/yt-dlp/1007-mask.mp4
-output_path=/scratch/rohhs/downloads/yt-dlp/1007_minimax_remover.mp4
+save_path=/scratch/rohhs/downloads/yt-dlp/
 
-python un_minimax_remover.py --video $input_path --mask $mask_path --output $output_path
+python run_minimax_remover.py --video $input_path --mask $mask_path --save_path $save_path
