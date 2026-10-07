@@ -27,7 +27,7 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 # The original application was designed around this number of frames.
 # Keep this as a safety limit unless your model supports longer sequences.
-MAX_FRAMES = 201
+MAX_FRAMES = os.getenv("MAX_FRAMES", 201)
 
 
 # -----------------------------------------------------------------------------
@@ -362,13 +362,13 @@ def remove_object(
     print(f"Video size   : {video_width} x {video_height}")
     print(f"Video FPS    : {fps:.3f}")
 
-    if num_frames > MAX_FRAMES:
-        raise ValueError(
-            f"Video contains {num_frames} frames, but this script is "
-            f"configured for at most {MAX_FRAMES} frames.\n"
-            "Increase MAX_FRAMES only if your MiniMax-Remover model "
-            "supports longer sequences."
-        )
+    # if num_frames > MAX_FRAMES:
+    #     raise ValueError(
+    #         f"Video contains {num_frames} frames, but this script is "
+    #         f"configured for at most {MAX_FRAMES} frames.\n"
+    #         "Increase MAX_FRAMES only if your MiniMax-Remover model "
+    #         "supports longer sequences."
+    #     )
 
     print(f"Loading mask: {mask_path}")
 

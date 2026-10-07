@@ -43,4 +43,6 @@ input_path=/scratch/rohhs/downloads/yt-dlp/1007-source.mp4
 mask_path=/scratch/rohhs/downloads/yt-dlp/1007-mask.mp4
 save_path=/scratch/rohhs/downloads/yt-dlp/
 
+MAX_FRAMES = 301
+
 python run_minimax_remover.py --video $input_path --mask $mask_path --save_path $save_path
