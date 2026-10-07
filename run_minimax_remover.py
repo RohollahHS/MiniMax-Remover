@@ -40,19 +40,12 @@ def get_pipe():
     """
     dtype = torch.float16 if DEVICE == "cuda" else torch.float32
 
-    vae = AutoencoderKLWan.from_pretrained(
-        "weights/vae",
-        torch_dtype=dtype,
-    )
-
-    transformer = Transformer3DModel.from_pretrained(
-        "weights/transformer",
-        torch_dtype=dtype,
-    )
-
-    scheduler = UniPCMultistepScheduler.from_pretrained(
-        "weights/scheduler"
-    )
+    print("Loading vae...")
+    vae = AutoencoderKLWan.from_pretrained("weights/vae", torch_dtype=dtype)
+    print("Loading transformer...")
+    transformer = Transformer3DModel.from_pretrained("weights/transformer", torch_dtype=dtype)
+    print("Loading scheduler...")
+    scheduler = UniPCMultistepScheduler.from_pretrained("weights/scheduler")
 
     pipe = Minimax_Remover_Pipeline(
         transformer=transformer,
